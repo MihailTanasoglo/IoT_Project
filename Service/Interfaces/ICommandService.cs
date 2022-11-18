@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Service.Interfaces
 {
-    internal interface ICommandService
+    public interface ICommandService
     {
         public List<Command> GetAllCommands();
         public Command GetCommand(Guid commandId);
-        public IActionResult RemoveCommand(Guid commandId);
-        public Command UpdateCommand(Guid commandId, Command command);
-        public IActionResult CreateCommand(Command command);
+        public Task RemoveCommand(Guid commandId);
+        public Command UpdateCommand(Guid commandId, CommandRequest command);
+        public Task CreateCommand(CommandRequest command);
     }
 }

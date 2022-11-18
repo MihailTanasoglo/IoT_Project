@@ -3,31 +3,55 @@ using Repos.Interfaces;
 
 namespace Repos.Implementetions
 {
-    internal class CommandRepo : ICommandRepo
+    public class CommandRepo : ICommandRepo
     {
+        private List<Command> _commands;
+        public CommandRepo()
+        {
+            _commands = new List<Command>();
+        }
         public bool CreateCommand(Command command)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _commands.Add(command);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
         public List<Command> GetAllCommands()
         {
-            throw new NotImplementedException();
+            return _commands;
         }
 
         public Command GetCommand(Guid commandId)
         {
-            throw new NotImplementedException();
+            var Command = _commands.FirstOrDefault(x=>x.CommandId == commandId);
+            return Command;
         }
 
         public bool RemoveCommand(Guid commandId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _commands.RemoveAll(x => x.CommandId == commandId);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;        
         }
 
         public Command UpdateCommand(Guid commandId, Command command)
         {
-            throw new NotImplementedException();
+            Command Command = _commands.First(x=>x.CommandId == commandId);
+            Command = command;
+            return Command; 
         }
     }
 }

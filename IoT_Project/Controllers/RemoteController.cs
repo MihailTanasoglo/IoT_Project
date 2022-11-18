@@ -1,28 +1,39 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Domain.Models;
+using Microsoft.AspNetCore.Mvc;
+using Service.Interfaces;
 
 namespace IoT_Project.Controllers
 {
     public class RemoteController: ControllerBase
     {
-        [HttpGet]
-        public IActionResult GetCommand(string command)
+        private readonly ICommandService _commandService;
+        public RemoteController(ICommandService commandService)
         {
-            return Ok(command);
+            _commandService = commandService;
+        }
+        [HttpGet]
+        public IActionResult GetCommand(Guid commandId)
+        {
+            var result = _commandService.GetCommand(commandId);
+            return Ok(result);
         }
         [HttpPost]
-        public IActionResult CreateCommand(string command)
+        public IActionResult CreateCommand(CommandRequest command)
         {
-            return Ok(command);
+            var result = _commandService.CreateCommand(command);
+            return Ok(result);
         }
         [HttpPut]
-        public IActionResult UpdateCommand(string command)
+        public IActionResult UpdateCommand(Guid commandId, CommandRequest command)
         {
-            return Ok(command);
+            var result = _commandService.UpdateCommand(commandId, command);
+            return Ok(result);
         }
         [HttpDelete]
-        public IActionResult RemoveCommand(string command)
+        public IActionResult RemoveCommand(Guid commandId)
         {
-            return Ok(command);
+            var result = _commandService.RemoveCommand(commandId);
+            return Ok(result);
         }
     }
 }

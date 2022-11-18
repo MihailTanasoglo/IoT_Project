@@ -2,7 +2,7 @@
 
 namespace Repos.Interfaces
 {
-    internal interface ICommandRepo
+    public interface ICommandRepo
     {
         public List<Command> GetAllCommands();
         public Command GetCommand(Guid commandId);

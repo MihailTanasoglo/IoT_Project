@@ -8,6 +8,6 @@ namespace Repos.Interfaces
         public Command GetCommand(Guid commandId);
         public bool RemoveCommand(Guid commandId);
         public Command UpdateCommand(Guid commandId, Command command);
-        public bool CreateCommand(Command command);
+        public Command CreateCommand(Command command);
     }
 }

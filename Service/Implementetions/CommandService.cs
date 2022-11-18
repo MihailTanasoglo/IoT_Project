@@ -47,7 +47,6 @@ namespace Service.Implementetions
                 return null;
             var _command = new Command
             {
-                CommandId = commandId,
                 Name = command.Name,
                 Description = command.Description,
                 CommandCode = command.CommandCode

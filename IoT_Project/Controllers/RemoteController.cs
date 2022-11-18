@@ -4,6 +4,8 @@ using Service.Interfaces;
 
 namespace IoT_Project.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class RemoteController: ControllerBase
     {
         private readonly ICommandService _commandService;
@@ -11,26 +13,37 @@ namespace IoT_Project.Controllers
         {
             _commandService = commandService;
         }
-        [HttpGet]
-        public IActionResult GetCommand(Guid commandId)
+
+        [HttpGet("getById")]
+        public IActionResult GetById(Guid commandId)
         {
             var result = _commandService.GetCommand(commandId);
             return Ok(result);
         }
-        [HttpPost]
-        public IActionResult CreateCommand(CommandRequest command)
+
+        [HttpGet("getAll")]
+        public IActionResult GetAll()
+        {
+            var result = _commandService.GetAllCommands();
+            return Ok(result);
+        }
+
+        [HttpPost("Insert")]
+        public IActionResult Create(CommandRequest command)
         {
             var result = _commandService.CreateCommand(command);
             return Ok(result);
         }
-        [HttpPut]
-        public IActionResult UpdateCommand(Guid commandId, CommandRequest command)
+
+        [HttpPut("Update")]
+        public IActionResult Update(Guid commandId, CommandRequest command)
         {
             var result = _commandService.UpdateCommand(commandId, command);
             return Ok(result);
         }
-        [HttpDelete]
-        public IActionResult RemoveCommand(Guid commandId)
+
+        [HttpDelete("Delete")]
+        public IActionResult Remove(Guid commandId)
         {
             var result = _commandService.RemoveCommand(commandId);
             return Ok(result);

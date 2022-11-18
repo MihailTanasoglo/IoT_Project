@@ -10,7 +10,7 @@ namespace Repos.Implementetions
         {
             _commands = new List<Command>();
         }
-        public bool CreateCommand(Command command)
+        public Command CreateCommand(Command command)
         {
             try
             {
@@ -18,9 +18,9 @@ namespace Repos.Implementetions
             }
             catch (Exception)
             {
-                return false;
+                return null;
             }
-            return true;
+            return command;
         }
 
         public List<Command> GetAllCommands()
@@ -49,8 +49,10 @@ namespace Repos.Implementetions
 
         public Command UpdateCommand(Guid commandId, Command command)
         {
-            Command Command = _commands.First(x=>x.CommandId == commandId);
-            Command = command;
+            Command Command = _commands.Find(x=>x.CommandId == commandId);
+            Command.Name = command.Name;
+            Command.Description = command.Description;
+            Command.CommandCode = command.CommandCode;
             return Command; 
         }
     }

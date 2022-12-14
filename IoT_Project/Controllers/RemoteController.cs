@@ -28,6 +28,13 @@ namespace IoT_Project.Controllers
             return Ok(result);
         }
 
+        [HttpGet("getCommand")]
+        public IActionResult GetForMC()
+        {
+            var result = _commandService.GetCommandForMC();
+            return Ok(result);
+        }
+
         [HttpPost("Insert")]
         public IActionResult Create(CommandRequest command)
         {

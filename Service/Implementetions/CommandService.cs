@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Repos.Interfaces;
 using Service.Interfaces;
+using System.ComponentModel.Design;
 
 namespace Service.Implementetions
 {
@@ -33,6 +34,11 @@ namespace Service.Implementetions
         public Command GetCommand(Guid commandId)
         {
             return _commandRepo.GetCommand(commandId);
+        }
+
+        public Command GetCommandForMC()
+        {
+            return _commandRepo.GetCommandForMC();
         }
 
         public Task RemoveCommand(Guid commandId)

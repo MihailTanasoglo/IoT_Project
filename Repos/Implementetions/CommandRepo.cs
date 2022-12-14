@@ -6,9 +6,12 @@ namespace Repos.Implementetions
     public class CommandRepo : ICommandRepo
     {
         private List<Command> _commands;
+        private List<Command> _commandsForMC;
+
         public CommandRepo()
         {
             _commands = new List<Command>();
+            _commandsForMC = new List<Command>();
         }
         public Command CreateCommand(Command command)
         {
@@ -30,8 +33,30 @@ namespace Repos.Implementetions
 
         public Command GetCommand(Guid commandId)
         {
-            var Command = _commands.FirstOrDefault(x=>x.CommandId == commandId);
+            Command Command = _commands.FirstOrDefault(x=>x.CommandId == commandId);
+
+            if (Command != null)
+            {
+                _commandsForMC.Add(Command);
+            }
             return Command;
+        }
+
+        public Command GetCommandForMC()
+        {
+            Command command = null;
+
+            if (_commandsForMC.Count > 0)
+            {
+                command = _commandsForMC[0];
+            }
+
+            if (command != null)
+            {
+                _commandsForMC.Remove(command);
+            }
+                
+            return command;
         }
 
         public bool RemoveCommand(Guid commandId)

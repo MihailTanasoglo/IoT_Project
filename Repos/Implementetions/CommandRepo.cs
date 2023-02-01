@@ -1,5 +1,6 @@
 ﻿using Domain.Models;
 using Repos.Interfaces;
+using System.ComponentModel.Design;
 
 namespace Repos.Implementetions
 {
@@ -42,7 +43,7 @@ namespace Repos.Implementetions
             return Command;
         }
 
-        public Command GetCommandForMC()
+        public long GetCommandForMC()
         {
             Command command = null;
 
@@ -56,7 +57,7 @@ namespace Repos.Implementetions
                 _commandsForMC.Remove(command);
             }
                 
-            return command;
+            return command.CommandCode;
         }
 
         public bool RemoveCommand(Guid commandId)
@@ -79,6 +80,17 @@ namespace Repos.Implementetions
             Command.Description = command.Description;
             Command.CommandCode = command.CommandCode;
             return Command; 
+        }
+
+        public bool Exist(long code)
+        {
+            Command Command = _commands.FirstOrDefault(x => x.CommandCode == code);
+
+            if (Command != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

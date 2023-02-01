@@ -38,6 +38,8 @@ namespace IoT_Project.Controllers
         [HttpPost("Insert")]
         public IActionResult Create(CommandRequest command)
         {
+            if (_commandService.Exist(command.CommandCode))
+                return Ok();
             var result = _commandService.CreateCommand(command);
             return Ok(result);
         }

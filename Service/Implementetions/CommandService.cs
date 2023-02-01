@@ -36,7 +36,7 @@ namespace Service.Implementetions
             return _commandRepo.GetCommand(commandId);
         }
 
-        public Command GetCommandForMC()
+        public long GetCommandForMC()
         {
             return _commandRepo.GetCommandForMC();
         }
@@ -58,6 +58,13 @@ namespace Service.Implementetions
                 CommandCode = command.CommandCode
             };
             return _commandRepo.UpdateCommand(commandId, _command);
+        }
+
+        public bool Exist(long code)
+        {
+            if (_commandRepo.Exist(code))
+                return true;
+            return false;
         }
     }
 }

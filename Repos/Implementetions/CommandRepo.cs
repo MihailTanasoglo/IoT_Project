@@ -56,6 +56,8 @@ namespace Repos.Implementetions
             {
                 _commandsForMC.Remove(command);
             }
+            else
+                return "";
                 
             return command.CommandCode;
         }

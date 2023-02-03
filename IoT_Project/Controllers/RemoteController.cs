@@ -32,7 +32,9 @@ namespace IoT_Project.Controllers
         public IActionResult GetForMC()
         {
             var result = _commandService.GetCommandForMC();
-            return Ok(result);
+            if (result!="")
+                return Ok(result);
+            return Ok();
         }
 
         [HttpPost("Insert")]

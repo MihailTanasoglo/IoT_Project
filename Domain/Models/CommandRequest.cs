@@ -8,6 +8,6 @@ namespace Domain.Models
         public string Name { get; set; } = ConstantStrings.NewCommand;
         public string? Description { get; set; }
         [Required]
-        public long CommandCode { get; set; }
+        public string CommandCode { get; set; }
     }
 }

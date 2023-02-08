@@ -43,7 +43,7 @@ namespace Repos.Implementetions
             return Command;
         }
 
-        public long GetCommandForMC()
+        public string GetCommandForMC()
         {
             Command command = null;
 
@@ -56,6 +56,8 @@ namespace Repos.Implementetions
             {
                 _commandsForMC.Remove(command);
             }
+            else
+                return "";
                 
             return command.CommandCode;
         }
@@ -82,7 +84,7 @@ namespace Repos.Implementetions
             return Command; 
         }
 
-        public bool Exist(long code)
+        public bool Exist(string code)
         {
             Command Command = _commands.FirstOrDefault(x => x.CommandCode == code);
 

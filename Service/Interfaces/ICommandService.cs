@@ -7,10 +7,10 @@ namespace Service.Interfaces
     {
         public List<Command> GetAllCommands();
         public Command GetCommand(Guid commandId);
-        public long GetCommandForMC();
+        public string GetCommandForMC();
         public Task RemoveCommand(Guid commandId);
         public Command UpdateCommand(Guid commandId, CommandRequest command);
         public Task CreateCommand(CommandRequest command);
-        public bool Exist(long code);
+        public bool Exist(string code);
     }
 }

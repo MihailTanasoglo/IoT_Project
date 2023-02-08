@@ -6,10 +6,10 @@ namespace Repos.Interfaces
     {
         public List<Command> GetAllCommands();
         public Command GetCommand(Guid commandId);
-        public long GetCommandForMC();
+        public string GetCommandForMC();
         public bool RemoveCommand(Guid commandId);
         public Command UpdateCommand(Guid commandId, Command command);
         public Command CreateCommand(Command command);
-        public bool Exist(long code);
+        public bool Exist(string code);
     }
 }
